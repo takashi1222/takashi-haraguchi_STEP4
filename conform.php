@@ -14,7 +14,7 @@ function validateFormData() {
         $error["age"] = "年齢は0から150の間で入力してください。";
     }
 
-    if (empty($_POST[""tel""])) {
+    if (empty($_POST["tel"])) {
         $error[""tel""] = "電話番号が入力されていません。";
     } elseif (!preg_match("/^[0-9-]+$/", $_POST[""tel""])) {
         $error["tel"] = "電話番号は半角数字とハイフンのみ使用できます。";

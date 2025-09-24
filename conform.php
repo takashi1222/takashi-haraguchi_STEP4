@@ -15,7 +15,7 @@ function validateFormData() {
     }
 
     if (empty($_POST["tel"])) {
-        $error[""tel""] = "電話番号が入力されていません。";
+        $error["tel"] = "電話番号が入力されていません。";
     } elseif (!preg_match("/^[0-9-]+$/", $_POST[""tel""])) {
         $error["tel"] = "電話番号は半角数字とハイフンのみ使用できます。";
     }

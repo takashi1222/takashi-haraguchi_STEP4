@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <body>
     <div class="container">
         <h1>フォーム入力</h1>
-    <form method="post" action="送信先のURL">
+    <form method="post" action="https://www.youtube.com/">
         <div>
             <label for="name">名前:</label>
             <br>
@@ -69,6 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </select>
         </div>
         <button type="submit">送信</button>
+        </form>
     </form>
     </div>
 </body>

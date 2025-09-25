@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <body>
     <div class="container">
         <h1>フォーム入力</h1>
-    <form method="post" action="https://www.youtube.com/">
+    <form method="post" action="conform.php">
         <div>
             <label for="name">名前:</label>
             <br>

@@ -1,41 +1,3 @@
-<?php
-function validateFormData() {
-    $error = array();
-
-    if (empty($_POST["name"])) {
-        $error["name"] = "名前が入力されていません。";
-    } elseif (!preg_match("/^[ぁ-んァ-ヶ一-龠々ーa-zA-Z\s]+$/u", $_POST["name"])) {
-        $error["name"] = "名前はひらがな、カタカナ、漢字、英字のみ使用できます。";
-    }
-
-    if (empty($_POST["age"])) {
-        $error["age"] = "年齢が入力されていません。";
-    } elseif (!is_numeric($_POST["age"]) || $_POST["age"] < 0 || $_POST["age"] > 150) {
-        $error["age"] = "年齢は0から150の間で入力してください。";
-    }
-
-    if (empty($_POST["tel"])) {
-        $error["tel"] = "電話番号が入力されていません。";
-    } elseif (!preg_match("/^[0-9-]+$/", $_POST[""tel""])) {
-        $error["tel"] = "電話番号は半角数字とハイフンのみ使用できます。";
-    }
-
-    if (empty($_POST["email"])) {
-        $error["email"] = "メールアドレスが入力されていません。";
-    } elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-        $error["email"] = "メールアドレスの形式が正しくありません。";
-    }
-
-    if (empty($_POST["address"])) {
-        $error["address"] = "住所が入力されていません。";
-    } elseif (!preg_match("/^[ぁ-んァ-ヶ一-龠々ーa-zA-Z0-9\s]+$/u", $_POST["address"])) {
-        $error["address"] = "住所はひらがな、カタカナ、漢字、英字のみ使用できます。";
-    }
-
-    return $error;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
@@ -44,48 +6,24 @@ function validateFormData() {
 </head>
 
 <body>
-    <div class="container">
-        <h1>フォーム入力</h1>
-    <form method="post" action="送信先のURL">
-        <div>
-            <label for="name">名前:</label>
-            <br>
-            <input type="text" id="name" name="name">
-        </div>
-        <div>
-            <label for="age">年齢:</label>
-            <br>
-            <input type="text" id="age" name="age">
-        </div>
-        <div>
-            <label for=""tel"">電話番号:</label>
-            <br>
-            <input type=""tel"" id=""tel"" name=""tel"">
-        </div>
-        <div>
-            <label for="email">メールアドレス:</label>
-            <br>
-            <input type="email" id="email" name="email">
-        </div>
-        <div>
-            <label for="address">住所:</label>
-            <br>
-            <input type="text" id="address" name="address">
-        </div>
-        <div>
-            <label for="question">質問:</label>
-            <br>
-            <input type="text" id="question" name="question">
-        </div>
-        <div>
-            <label for="gender">性別:</label>
-            <br>
-            <select id="gender" name="gender">
-                <option value="men">男性</option>
-                <option value="women">女性</option>
-            </select>
-        </div>
-        <button type="submit">送信</button>
-    </form>
-    </div>
+    <h1>フォーム入力</h1>
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $name = $_POST["name"];
+        $age = $_POST["age"];
+        $tel = $_POST["tel"];
+        $email = $_POST["email"];
+        $address = $_POST["address"];
+        $question = $_POST["question"];
+        $gender = $_POST["gender"];
+        
+        echo "<p><strong>名前:</strong>" . htmlspecialchars($name, ENT_QUOTES, 'UTF-8') . "</p>";
+        echo "<p><strong>年齢:</strong>" . htmlspecialchars($age, ENT_QUOTES, 'UTF-8') . "</p>";
+        echo "<p><strong>電話番号:</strong>" . htmlspecialchars($tel, ENT_QUOTES, 'UTF-8') . "</p>";
+        echo "<p><strong>メールアドレス:</strong>" . htmlspecialchars($email, ENT_QUOTES, 'UTF-8') . "</p>";
+        echo "<p><strong>住所:</strong>" . htmlspecialchars($address, ENT_QUOTES, 'UTF-8') . "</p>";
+        echo "<p><strong>質問:</strong>" . htmlspecialchars($question, ENT_QUOTES, 'UTF-8') . "</p>";
+        echo "<p><strong>性別:</strong>" . htmlspecialchars($gender, ENT_QUOTES, 'UTF-8') . "</p>";
+    }
+    ?>
 </body>

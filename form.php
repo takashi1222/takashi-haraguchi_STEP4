@@ -64,8 +64,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <label for="gender">性別:</label>
             <br>
             <select id="gender" name="gender">
-                <option value="men">男性</option>
-                <option value="women">女性</option>
+                <option value="男性">男性</option>
+                <option value="女性">女性</option>
             </select>
         </div>
         <button type="submit">送信</button>

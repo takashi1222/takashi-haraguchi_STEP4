@@ -6,7 +6,8 @@
 </head>
 
 <body>
-    <h1>フォーム入力</h1>
+    <div class="container">
+    <h1>入力内容確認</h1>
     <?php
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $name = $_POST["name"];
@@ -26,4 +27,5 @@
         echo "<p><strong>性別:</strong>" . htmlspecialchars($gender, ENT_QUOTES, 'UTF-8') . "</p>";
     }
     ?>
+    </div>
 </body>
